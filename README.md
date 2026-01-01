@@ -11,8 +11,8 @@ Because an example is worth a thousand words:
 ```shell
 ╭─user@example ~/healthchecker
 ╰─$ go build \
-    -ldflags="-X 'healthchecker/config.UrlToCheck=https://btefrance.fr'" \
-    -o healthcheck \ 
+    -ldflags="-X 'github.com/BTE-France/healthchecker/config.UrlToCheck=https://btefrance.fr'" \
+    -o healthcheck \
     github.com/BTE-France/healthchecker/cmd/healthcheck
 ╭─user@example ~/healthchecker
 ╰─$ ./healthcheck; echo "status: $?"
@@ -22,8 +22,8 @@ status: 0
 
 ╭─user@example ~/healthchecker
 ╰─$ go build \
-    -ldflags="-X 'healthchecker/config.UrlToCheck=https://btefrance.fr/invalid/uri'" \
-    -o healthcheck \ 
+    -ldflags="-X github.com/BTE-France/healthchecker/config.UrlToCheck=https://btefrance.fr/invalid/uri'" \
+    -o healthcheck \
     github.com/BTE-France/healthchecker/cmd/healthcheck
 ╭─user@example ~/healthchecker
 ╰─$ ./healthcheck; echo "status: $?"
