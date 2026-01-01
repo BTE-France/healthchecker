@@ -6,6 +6,7 @@ import (
 	"net/url"
 )
 
+// HttpHealthChecker is the implementation of HealthChecker for HTTP and HTTPS URLs.
 type HttpHealthChecker struct {
 	url url.URL
 }
