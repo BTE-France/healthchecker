@@ -1,0 +1,23 @@
+# Integration test: build with the helper script and run the resulting binary
+name: Integration test
+
+on:
+  push:
+    branches: [ "*" ]
+  pull_request:
+    branches: [ "*" ]
+
+jobs:
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.25'
+      - name: check https://btefrance.fr
+        run: ./build.sh https://btefrance.fr && ./healthcheck
+      - name: check https://localhost:1337/health
+        run: ./build.sh https://localhost:1337/health check && ! ./check
