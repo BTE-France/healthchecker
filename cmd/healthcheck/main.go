@@ -3,11 +3,12 @@ package main
 import (
 	"flag"
 	"fmt"
-	"healthchecker/config"
-	"healthchecker/internal"
 	"log/slog"
 	"os"
 	"strings"
+
+	"github.com/BTE-France/healthchecker/config"
+	"github.com/BTE-France/healthchecker/internal"
 )
 
 type cliArgs struct {
