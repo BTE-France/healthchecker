@@ -12,7 +12,6 @@ import (
 
 type cliArgs struct {
 	doConfigCheck bool
-	logLevel      slog.Level
 	logHandler    slog.Handler
 }
 
@@ -56,13 +55,12 @@ func parseCliArgs() (*cliArgs, error) {
 
 func main() {
 
-	args, err := parseCliArgs()
+	args, err := parseCliArgs() // parseCliArgs() fails open, so it is supposed to always return a valid cliArgs structs
 	logger := slog.New(args.logHandler).With(
 		"app", "healthchecker",
 		"urlToCheck", config.UrlToCheck,
 	)
 	slog.SetDefault(logger)
-	slog.SetLogLoggerLevel(args.logLevel)
 	if err != nil {
 		logger.Error("invalid CLI arguments", "error", err)
 		os.Exit(2)
